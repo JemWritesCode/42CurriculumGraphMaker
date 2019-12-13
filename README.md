@@ -10,7 +10,6 @@ Goal#1: File > Save Graph
   
 Goal#2: File > Upload Graph
   You can upload the .txt file so you don't have to start from scratch every time.
-  At this point the program should be able to give you the coordinates and you can save your work.
   
 Goal#3: Connections: 
   Draw the connections between nodes and get the coordinates. This will correlate to the "By" of Project Data in the 42API.
