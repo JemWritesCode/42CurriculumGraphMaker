@@ -28,9 +28,11 @@ You can use the graph maker here: https://editor.p5js.org/kaidrumm/sketches/-Xb8
  #### Goal#6: Additional Shapes
    Rectangles, Diamonds, Triangles, etc
   
-#### Goal#7: Selection
-  Hold down Ctrl and select multiple nodes so you can move entire sections at a time. This will be useful for updating entire branches.
+#### Goal#7: Multi-Select
+  Hold down Ctrl and select multiple nodes/connections so you can move entire sections at a time. This will be useful for updating entire branches. 
  
+ #### Goal#8: Box Select / Magic Wand Select
+  Select all nodes inside of a box.  It may be a good idea to also allow drawing a selection for better targeting.
  
 
 
