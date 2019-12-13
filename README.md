@@ -21,6 +21,16 @@ You can use the graph maker here: https://editor.p5js.org/kaidrumm/sketches/-Xb8
   
   Call the 42API to upload the new graph to the intra.
   
+ -----
+ #### Goal#5: Node Size
+  Change the size of the shape.
+  
+ #### Goal#6: Additional Shapes
+   Rectangles, Diamonds, Triangles, etc
+  
+#### Goal#7: Selection
+  Hold down Ctrl and select multiple nodes so you can move entire sections at a time. This will be useful for updating entire branches.
+ 
  
 
 
