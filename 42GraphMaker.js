@@ -23,7 +23,7 @@ function setup() {
 }
 
 function draw() {
-  background('#171719');
+  background('#002534');
   stroke('#cccdcf');
   fill('#cccdcf');
   textAlign(CENTER, CENTER);
