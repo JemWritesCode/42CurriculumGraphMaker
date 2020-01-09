@@ -22,9 +22,22 @@ function setup() {
   print("Type '@' (Shift+2) to print coordinates!");
 }
 
-function draw() {
-  background('#002534');
-  stroke('#cccdcf');
+function mouseLocation() {
+  fill('white');
+  stroke('blue');
+  text('(' + 6 * mouseX + ', ' + 6 * mouseY + ')', mouseX, mouseY);
+}
+
+function drawLinesOnCanvas() {
+  for (let i = 0; i < 6000; i += 50) {
+    line(i, 0, i, 6000);
+  }
+  for (let j = 0; j < 6000; j += 50) {
+    line(0, j, 6000, j);
+  }
+}
+
+function writeNumbersOnCanvas() {
   fill('#cccdcf');
   textAlign(CENTER, CENTER);
   text('0', 10, 10);
@@ -34,23 +47,23 @@ function draw() {
   line(0, 500, 10, 500); // left middle
   text('3000', 15, 500);
   text('6000', 15, 995); // left bottom
-
   fill('#424242');
-  for (let i = 0; i < 6000; i += 50) {
-    line(i, 0, i, 6000);
-  }
-  for (let j = 0; j < 6000; j += 50) {
-    line(0, j, 6000, j);
-  }
+}
+
+//draw is built in and runs without being called.
+function draw() {
+  background('#002534');
+  stroke('#cccdcf');
+  fill('#424242');
 
   for (let prj of projectList) {
     if (!prj.del) {
       prj.display();
     }
   }
-  fill('white');
-  stroke('white');
-  text('(' + 6 * mouseX + ', ' + 6 * mouseY + ')', mouseX, mouseY);
+  writeNumbersOnCanvas();
+  drawLinesOnCanvas();
+  mouseLocation();
 }
 
 function outputAll() {
