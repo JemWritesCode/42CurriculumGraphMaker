@@ -72,6 +72,8 @@ function outputAll() {
       print(`${prj.name}: (${6 * prj.x}, ${6 * prj.y})`);
     }
   }
+  //console.log(projectList[0])
+  //saveStrings(projectList, 'theList.txt');
 }
 
 function keyPressed() {
