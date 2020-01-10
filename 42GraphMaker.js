@@ -18,11 +18,13 @@ var typing;
 var current;
 
 function setup() {
+  loadStrings('theList.txt', graphTextFileLoader); //Saves the graph you are uploading.
   createCanvas(1000, 1000);
   print("Type '@' (Shift+2) to print coordinates!");
+}
 
-  var theList = loadStrings('theList.txt');
-  console.log(theList);
+function graphTextFileLoader(result) {
+  console.log(result);
 }
 
 function mouseLocation() {
