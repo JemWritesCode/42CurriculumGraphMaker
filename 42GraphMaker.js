@@ -20,6 +20,9 @@ var current;
 function setup() {
   createCanvas(1000, 1000);
   print("Type '@' (Shift+2) to print coordinates!");
+
+  var theList = loadStrings('theList.txt');
+  console.log(theList);
 }
 
 function mouseLocation() {
@@ -67,13 +70,16 @@ function draw() {
 }
 
 function outputAll() {
+  var test = [];
   for (let prj of projectList) {
     if (!prj.del) {
       print(`${prj.name}: (${6 * prj.x}, ${6 * prj.y})`);
+      test.push(prj.name);
+      test.push(prj.x);
+      test.push(prj.y);
     }
   }
-  //console.log(projectList[0])
-  //saveStrings(projectList, 'theList.txt');
+  saveStrings(test, 'theList.txt');
 }
 
 function keyPressed() {
