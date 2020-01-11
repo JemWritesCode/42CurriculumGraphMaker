@@ -24,7 +24,7 @@ function setup() {
 }
 
 function graphTextFileLoader(result) {
-  console.log(result);
+  // console.log(result)
 }
 
 function mouseLocation() {
@@ -86,7 +86,8 @@ function outputAll() {
       test.push(6 * prj.y);
     }
   }
-  saveStrings(test, 'theList.txt');
+  print(projectList);
+  //saveStrings(test, 'theList.txt');
 }
 
 function keyPressed() {
@@ -113,6 +114,7 @@ function mouseDragged() {
 }
 
 function mousePressed() {
+  console.log(mouseY);
   var selected = false;
   for (let prj of projectList) {
     if (!prj.del && collidePointEllipse(mouseX, mouseY, prj.x, prj.y, 30, 30)) {
@@ -121,7 +123,7 @@ function mousePressed() {
       typing = true;
     }
   }
-  if (!selected) {
+  if (!selected && mouseY < 1000) {
     newProject = new createProject(mouseX, mouseY);
     typing = true;
     current = newProject;
