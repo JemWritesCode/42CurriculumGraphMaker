@@ -18,7 +18,7 @@ var typing;
 var current;
 
 function setup() {
-  loadStrings('theList.txt', graphTextFileLoader); //Saves the graph you are uploading.
+  loadStrings('theList.txt', graphTextFileLoader);
   createCanvas(1000, 1000);
   print("Type '@' (Shift+2) to print coordinates!");
 }
@@ -55,17 +55,22 @@ function writeNumbersOnCanvas() {
   fill('#424242');
 }
 
-//draw is built in and runs without being called.
-function draw() {
+function createBackground() {
   background('#002534');
   stroke('#cccdcf');
   fill('#424242');
+}
+
+//draw is built in and runs without being called.
+function draw() {
+  createBackground();
 
   for (let prj of projectList) {
     if (!prj.del) {
       prj.display();
     }
   }
+
   writeNumbersOnCanvas();
   drawLinesOnCanvas();
   mouseLocation();
@@ -77,8 +82,8 @@ function outputAll() {
     if (!prj.del) {
       print(`${prj.name}: (${6 * prj.x}, ${6 * prj.y})`);
       test.push(prj.name);
-      test.push(prj.x);
-      test.push(prj.y);
+      test.push(6 * prj.x);
+      test.push(6 * prj.y);
     }
   }
   saveStrings(test, 'theList.txt');
