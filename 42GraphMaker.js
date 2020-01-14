@@ -70,24 +70,20 @@ function draw() {
       prj.display();
     }
   }
-
+  
   writeNumbersOnCanvas();
   drawLinesOnCanvas();
   mouseLocation();
 }
 
 function outputAll() {
-  var test = [];
+  print(projectList)
   for (let prj of projectList) {
     if (!prj.del) {
       print(`${prj.name}: (${6 * prj.x}, ${6 * prj.y})`);
-      test.push(prj.name);
-      test.push(6 * prj.x);
-      test.push(6 * prj.y);
     }
   }
-  print(projectList);
-  //saveStrings(test, 'theList.txt');
+  saveJSON(projectList, 'theList.txt');
 }
 
 function keyPressed() {
