@@ -18,13 +18,13 @@ var typing;
 var current;
 
 function setup() {
-  loadStrings('theList.txt', graphTextFileLoader);
+  loadJSON('testMe.txt', graphTextFileLoader);
   createCanvas(1000, 1000);
   print("Type '@' (Shift+2) to print coordinates!");
 }
 
 function graphTextFileLoader(result) {
-  // console.log(result)
+  // print(result)
 }
 
 function mouseLocation() {
@@ -83,7 +83,7 @@ function outputAll() {
       print(`${prj.name}: (${6 * prj.x}, ${6 * prj.y})`);
     }
   }
-  saveJSON(projectList, 'theList.txt');
+ // saveJSON(projectList, 'wut.txt');
 }
 
 function keyPressed() {
@@ -110,7 +110,6 @@ function mouseDragged() {
 }
 
 function mousePressed() {
-  console.log(mouseY);
   var selected = false;
   for (let prj of projectList) {
     if (!prj.del && collidePointEllipse(mouseX, mouseY, prj.x, prj.y, 30, 30)) {
