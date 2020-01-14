@@ -18,13 +18,14 @@ var typing;
 var current;
 
 function setup() {
-  loadJSON('testMe.txt', graphTextFileLoader);
+  loadJSON('test.json', graphTextFileLoader);
+
   createCanvas(1000, 1000);
   print("Type '@' (Shift+2) to print coordinates!");
 }
 
 function graphTextFileLoader(result) {
-  // print(result)
+   print(result)
 }
 
 function mouseLocation() {
