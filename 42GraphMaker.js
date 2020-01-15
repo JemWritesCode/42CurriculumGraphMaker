@@ -89,7 +89,7 @@ function draw() {
   writeNumbersOnCanvas();
   drawLinesOnCanvas();
   mouseLocation();
-  loadJSON('test.json', graphTextFileLoader); //MISTAKE. Loads but doesn't keep!!!
+   noLoop()
 }
 
 function outputAll() {
