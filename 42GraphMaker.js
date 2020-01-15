@@ -18,14 +18,28 @@ var typing;
 var current;
 
 function setup() {
-  loadJSON('test.json', graphTextFileLoader);
-
   createCanvas(1000, 1000);
   print("Type '@' (Shift+2) to print coordinates!");
+  loadJSON('test.json', graphTextFileLoader);
 }
 
 function graphTextFileLoader(result) {
    print(result)
+  
+    for (let prj of result) {
+    if (!prj.del) {
+      prj.display = function() {
+      print("1")
+      fill('#474747');
+      stroke('#cccdcf');
+      ellipse(prj.x, prj.y, 30);
+      fill('#cccdcf');
+      textAlign(CENTER, CENTER);
+      text(prj.name, prj.x, prj.y);
+      }
+      prj.display() 
+    } 
+  }
 }
 
 function mouseLocation() {
@@ -75,10 +89,11 @@ function draw() {
   writeNumbersOnCanvas();
   drawLinesOnCanvas();
   mouseLocation();
+  loadJSON('test.json', graphTextFileLoader); //MISTAKE. Loads but doesn't keep!!!
 }
 
 function outputAll() {
-  print(projectList)
+  //print(projectList)
   for (let prj of projectList) {
     if (!prj.del) {
       print(`${prj.name}: (${6 * prj.x}, ${6 * prj.y})`);
