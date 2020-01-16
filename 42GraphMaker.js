@@ -20,7 +20,10 @@ var current;
 function setup() {
   createCanvas(1000, 1000);
   print("Type '@' (Shift+2) to print coordinates!");
-  loadJSON('test.json', graphTextFileLoader);
+  createBackground();
+    writeNumbersOnCanvas();
+  drawLinesOnCanvas();
+  
 }
 
 function graphTextFileLoader(result) {
@@ -29,7 +32,6 @@ function graphTextFileLoader(result) {
     for (let prj of result) {
     if (!prj.del) {
       prj.display = function() {
-      print("1")
       fill('#474747');
       stroke('#cccdcf');
       ellipse(prj.x, prj.y, 30);
@@ -78,20 +80,34 @@ function createBackground() {
 
 //draw is built in and runs without being called.
 function draw() {
-  createBackground();
+  
 
+  //SHOULD WORK.
   for (let prj of projectList) {
     if (!prj.del) {
-      prj.display();
+      prj.display = function() {
+      print("1")
+      fill('#474747');
+      stroke('#cccdcf');
+      ellipse(prj.x, prj.y, 30);
+      fill('#cccdcf');
+      textAlign(CENTER, CENTER);
+      text(prj.name, prj.x, prj.y);
+      }
+      prj.display() 
     }
   }
   
-  writeNumbersOnCanvas();
-  drawLinesOnCanvas();
-  mouseLocation();
-   noLoop()
-}
 
+  //mouseLocation(); //Fix this later.
+    
+  var originalJSON = loadJSON('test.json', graphTextFileLoader);
+  print(originalJSON)
+  projectList.push(originalJSON)
+  //saveJSON(projectList, 'jjj.txt');
+   noLoop();
+}
+  
 function outputAll() {
   //print(projectList)
   for (let prj of projectList) {
@@ -103,6 +119,10 @@ function outputAll() {
 }
 
 function keyPressed() {
+  
+  if (keyCode === TAB)
+    redraw();
+  
   // print(key, " ", keyCode)
   if (keyCode === RETURN || keyCode === ENTER) {
     typing = false;
@@ -126,6 +146,7 @@ function mouseDragged() {
 }
 
 function mousePressed() {
+ 
   var selected = false;
   for (let prj of projectList) {
     if (!prj.del && collidePointEllipse(mouseX, mouseY, prj.x, prj.y, 30, 30)) {
