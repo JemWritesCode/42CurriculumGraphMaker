@@ -84,7 +84,7 @@ function graphTextFileLoader(result) {
   for (let prj of result){
     projectList.push(prj); 
   }
-  saveJSON(projectList, 'savedFromStart.txt');
+//  saveJSON(projectList, 'savedFromStart.txt');
 }
   
 function outputAll() {
