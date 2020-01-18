@@ -20,28 +20,8 @@ var current;
 function setup() {
   createCanvas(1000, 1000);
   print("Type '@' (Shift+2) to print coordinates!");
-  createBackground();
-    writeNumbersOnCanvas();
-  drawLinesOnCanvas();
-  
-}
+  loadJSON('test.json', graphTextFileLoader);
 
-function graphTextFileLoader(result) {
-   print(result)
-  
-    for (let prj of result) {
-    if (!prj.del) {
-      prj.display = function() {
-      fill('#474747');
-      stroke('#cccdcf');
-      ellipse(prj.x, prj.y, 30);
-      fill('#cccdcf');
-      textAlign(CENTER, CENTER);
-      text(prj.name, prj.x, prj.y);
-      }
-      prj.display() 
-    } 
-  }
 }
 
 function mouseLocation() {
@@ -81,12 +61,14 @@ function createBackground() {
 //draw is built in and runs without being called.
 function draw() {
   
-
+  createBackground();
+  writeNumbersOnCanvas();
+  drawLinesOnCanvas();
+  
   //SHOULD WORK.
   for (let prj of projectList) {
     if (!prj.del) {
       prj.display = function() {
-      print("1")
       fill('#474747');
       stroke('#cccdcf');
       ellipse(prj.x, prj.y, 30);
@@ -97,15 +79,17 @@ function draw() {
       prj.display() 
     }
   }
-  
 
-  //mouseLocation(); //Fix this later.
-    
-  var originalJSON = loadJSON('test.json', graphTextFileLoader);
-  print(originalJSON)
-  projectList.push(originalJSON)
-  //saveJSON(projectList, 'jjj.txt');
-   noLoop();
+  mouseLocation(); //Fix this later.  
+}
+
+function graphTextFileLoader(result) { 
+  for (let prj of result){
+    projectList.push(prj); 
+  }
+  
+  //print(projectList) //showing what is in it as soona s
+  saveJSON(projectList, 'savedFromStart.txt');
 }
   
 function outputAll() {
@@ -115,14 +99,13 @@ function outputAll() {
       print(`${prj.name}: (${6 * prj.x}, ${6 * prj.y})`);
     }
   }
- // saveJSON(projectList, 'wut.txt');
+  //print(projectList);
+  saveJSON(projectList, 'testSave.txt');
 }
 
 function keyPressed() {
-  
-  if (keyCode === TAB)
-    redraw();
-  
+  // if (keyCode === TAB)
+  //   redraw();
   // print(key, " ", keyCode)
   if (keyCode === RETURN || keyCode === ENTER) {
     typing = false;
@@ -134,7 +117,7 @@ function keyPressed() {
   if (typing) {
     current.name += key;
   }
-  if (keyCode === 50) {
+  if (keyCode === 50){ 
     outputAll();
   }
 }
@@ -146,7 +129,6 @@ function mouseDragged() {
 }
 
 function mousePressed() {
- 
   var selected = false;
   for (let prj of projectList) {
     if (!prj.del && collidePointEllipse(mouseX, mouseY, prj.x, prj.y, 30, 30)) {
