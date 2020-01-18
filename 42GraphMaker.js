@@ -21,7 +21,6 @@ function setup() {
   createCanvas(1000, 1000);
   print("Type '@' (Shift+2) to print coordinates!");
   loadJSON('test.json', graphTextFileLoader);
-
 }
 
 function mouseLocation() {
@@ -58,14 +57,12 @@ function createBackground() {
   fill('#424242');
 }
 
-//draw is built in and runs without being called.
+
 function draw() {
-  
   createBackground();
   writeNumbersOnCanvas();
   drawLinesOnCanvas();
   
-  //SHOULD WORK.
   for (let prj of projectList) {
     if (!prj.del) {
       prj.display = function() {
@@ -80,38 +77,30 @@ function draw() {
     }
   }
 
-  mouseLocation(); //Fix this later.  
+  mouseLocation(); 
 }
 
 function graphTextFileLoader(result) { 
   for (let prj of result){
     projectList.push(prj); 
   }
-  
-  //print(projectList) //showing what is in it as soona s
   saveJSON(projectList, 'savedFromStart.txt');
 }
   
 function outputAll() {
-  //print(projectList)
   for (let prj of projectList) {
     if (!prj.del) {
       print(`${prj.name}: (${6 * prj.x}, ${6 * prj.y})`);
     }
   }
-  //print(projectList);
   saveJSON(projectList, 'testSave.txt');
 }
 
 function keyPressed() {
-  // if (keyCode === TAB)
-  //   redraw();
-  // print(key, " ", keyCode)
   if (keyCode === RETURN || keyCode === ENTER) {
     typing = false;
   }
   if (keyCode === DELETE || keyCode === BACKSPACE) {
-    // print("del")
     current.del = true;
   }
   if (typing) {
