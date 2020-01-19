@@ -1,8 +1,20 @@
-html,
-body {
+html, body {
   margin: 0;
   padding: 0;
 }
 canvas {
   display: block;
+}
+
+
+.page-footer {
+background-color: #717164;
+margin-top: 50px;  
+border: 1px solid black;
+float: left;
+width:99%;
+height: 10%;
+position: fixed;
+clear: both;
+margin-top: 1000px;
 }

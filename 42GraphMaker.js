@@ -22,7 +22,7 @@ function setup() {
   createCanvas(1000, 1000);
   print("Type '@' (Shift+2) to print coordinates!");
   
-  
+  //Section of code used to upload JSON files.
   document.getElementById('contentFile').onchange = function(evt) {
         try {
             let files = evt.target.files;
@@ -37,20 +37,12 @@ function setup() {
                 //console.log(event.target.result);
               myJSON = JSON.parse( event.target.result );
               graphTextFileLoader(myJSON)
-              //print(myJSON)
             };
            reader.readAsText(file);
-          //var myJSON = JSON.stringify( reader ); 
-          //print(myJSON)
-
         } catch (err) {
             console.error(err);
         }
     }
-  
-  
-  
- // loadJSON('test.json', graphTextFileLoader);
 }
 
 function graphTextFileLoader(result) { 
@@ -115,11 +107,6 @@ function draw() {
   }
   mouseLocation(); 
 }
-
-
-
-
-
 
 
 function outputAll() {
