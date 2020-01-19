@@ -16,6 +16,7 @@ function createProject(x, y) {
 var projectList = [];
 var typing;
 var current;
+var myJSON;
 
 function setup() {
   createCanvas(1000, 1000);
@@ -31,11 +32,16 @@ function setup() {
             }
             let file = files[0];
             let reader = new FileReader();
-            const self = this;
+            //const self = this;
             reader.onload = (event) => {
-                console.log('FILE CONTENT', event.target.result);
+                //console.log(event.target.result);
+              myJSON = JSON.parse( event.target.result );
+              graphTextFileLoader(myJSON)
+              //print(myJSON)
             };
-            reader.readAsText(file);
+           reader.readAsText(file);
+          //var myJSON = JSON.stringify( reader ); 
+          //print(myJSON)
 
         } catch (err) {
             console.error(err);
