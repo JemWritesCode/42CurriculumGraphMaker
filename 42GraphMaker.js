@@ -20,9 +20,40 @@ var current;
 function setup() {
   createCanvas(1000, 1000);
   print("Type '@' (Shift+2) to print coordinates!");
-  loadJSON('test.json', graphTextFileLoader);
+  
+  
+  document.getElementById('contentFile').onchange = function(evt) {
+        try {
+            let files = evt.target.files;
+            if (!files.length) {
+                alert('No file selected!');
+                return;
+            }
+            let file = files[0];
+            let reader = new FileReader();
+            const self = this;
+            reader.onload = (event) => {
+                console.log('FILE CONTENT', event.target.result);
+            };
+            reader.readAsText(file);
+
+        } catch (err) {
+            console.error(err);
+        }
+    }
+  
+  
+  
+ // loadJSON('test.json', graphTextFileLoader);
 }
 
+function graphTextFileLoader(result) { 
+  print(result)
+  for (let prj of result){
+    projectList.push(prj); 
+  }
+}
+  
 function mouseLocation() {
   fill('white');
   stroke('blue');
@@ -76,17 +107,15 @@ function draw() {
       prj.display() 
     }
   }
-
   mouseLocation(); 
 }
 
-function graphTextFileLoader(result) { 
-  for (let prj of result){
-    projectList.push(prj); 
-  }
-//  saveJSON(projectList, 'savedFromStart.txt');
-}
-  
+
+
+
+
+
+
 function outputAll() {
   for (let prj of projectList) {
     if (!prj.del) {
