@@ -8,6 +8,65 @@ function setup() {
   print("Type '@' (Shift+2) to print coordinates!");
 }
 
+function draw() {
+  createBackground();
+  writeNumbersOnCanvas();
+  drawLinesOnCanvas();
+  
+  for (let prj of projectList) {
+    if (!prj.del) {
+      prj.display = function() {
+      fill('#474747');
+      stroke('#cccdcf');
+      ellipse(prj.x, prj.y, 30);
+      fill('#cccdcf');
+      textAlign(CENTER, CENTER);
+      text(prj.name, prj.x, prj.y);
+      }
+      prj.display() 
+    }
+  }
+  mouseLocation(); 
+}
+
+function mousePressed() {
+  var selected = false;
+  for (let prj of projectList) {
+    if (!prj.del && collidePointEllipse(mouseX, mouseY, prj.x, prj.y, 30, 30)) {
+      current = prj;
+      selected = true;
+      typing = true;
+    }
+  }
+  if (!selected && mouseY < 1000) {
+    newProject = new createProject(mouseX, mouseY);
+    typing = true;
+    current = newProject;
+    projectList.push(newProject);
+  }
+}
+
+function mouseDragged() {
+  current.x = mouseX;
+  current.y = mouseY;
+  return false;
+}
+
+function keyPressed() {
+  if (keyCode === RETURN || keyCode === ENTER) {
+    typing = false;
+  }
+  if (keyCode === DELETE || keyCode === BACKSPACE) {
+    current.del = true;
+  }
+  if (typing) {
+    current.name += key;
+  }
+  if (keyCode === 50){ 
+    outputAll();
+  }
+}
+
 function createProject(x, y) {
   this.x = x;
   this.y = y;
@@ -53,27 +112,6 @@ function graphTextFileLoader(result) {
     projectList.push(prj); 
   }
 }
-  
-function draw() {
-  createBackground();
-  writeNumbersOnCanvas();
-  drawLinesOnCanvas();
-  
-  for (let prj of projectList) {
-    if (!prj.del) {
-      prj.display = function() {
-      fill('#474747');
-      stroke('#cccdcf');
-      ellipse(prj.x, prj.y, 30);
-      fill('#cccdcf');
-      textAlign(CENTER, CENTER);
-      text(prj.name, prj.x, prj.y);
-      }
-      prj.display() 
-    }
-  }
-  mouseLocation(); 
-}
 
 function outputAll() {
   for (let prj of projectList) {
@@ -82,42 +120,4 @@ function outputAll() {
     }
   }
   saveJSON(projectList, 'testSave.txt');
-}
-
-function keyPressed() {
-  if (keyCode === RETURN || keyCode === ENTER) {
-    typing = false;
-  }
-  if (keyCode === DELETE || keyCode === BACKSPACE) {
-    current.del = true;
-  }
-  if (typing) {
-    current.name += key;
-  }
-  if (keyCode === 50){ 
-    outputAll();
-  }
-}
-
-function mouseDragged() {
-  current.x = mouseX;
-  current.y = mouseY;
-  return false;
-}
-
-function mousePressed() {
-  var selected = false;
-  for (let prj of projectList) {
-    if (!prj.del && collidePointEllipse(mouseX, mouseY, prj.x, prj.y, 30, 30)) {
-      current = prj;
-      selected = true;
-      typing = true;
-    }
-  }
-  if (!selected && mouseY < 1000) {
-    newProject = new createProject(mouseX, mouseY);
-    typing = true;
-    current = newProject;
-    projectList.push(newProject);
-  }
 }
