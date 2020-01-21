@@ -21,8 +21,10 @@ var myJSON;
 function setup() {
   createCanvas(1000, 1000);
   print("Type '@' (Shift+2) to print coordinates!");
-  
-  //Section of code used to upload JSON files.
+}
+
+function uploadJSON(){
+   //Section of code used to upload JSON files.
   document.getElementById('contentFile').onchange = function(evt) {
         try {
             let files = evt.target.files;
@@ -42,7 +44,7 @@ function setup() {
         } catch (err) {
             console.error(err);
         }
-    }
+    } 
 }
 
 function graphTextFileLoader(result) { 
