@@ -2,7 +2,7 @@
 Update the curriculum graph more easily. (AKA Holy Graph / Curriculum Galaxy)
 Currently you can use this to click on the graph and add the text. This will give you a list of coordinates you can enter in Intra.
 
-You can use the graph maker here: https://editor.p5js.org/kaidrumm/sketches/-Xb87w9b8
+You can use the graph maker here: https://editor.p5js.org/JamieDawson/sketches/fCNariXxk
 
 ### Currently in Development:
 #### Goal#1: File > Save Graph
