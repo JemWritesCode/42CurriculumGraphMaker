@@ -5,6 +5,8 @@ Currently you can use this to click on the graph and add the text. This will giv
 You can use the graph maker here: https://editor.p5js.org/JamieDawson/sketches/fCNariXxk 
 
 Click the Run button. If you want to load a new map it will currently load over whatever is on the screen. Hit stop and run again to load on a blank graph.
+![ExampleImage](https://github.com/Jemmeh/42CurriculumGraphMaker/blob/master/Screen%20Shot%202020-01-30%20at%205.35.39%20PM.png?raw=true)
+
 
 ### Currently in Development:
 #### DONE Goal#1: File > Save Graph
