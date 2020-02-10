@@ -27,8 +27,9 @@ The link path, under the 'project_id, x1, y1, x2, y2, ...' format. One child per
 I think you can have an array of links for nodes with multiple connections.
 
 #### Goal#4: File > Upload to 42Intra
-  
-  Call the 42API to upload the new graph to the intra.
+Call the 42API to upload the new graph to the intra.
+  Goal 4.1
+    Will need to add the projectID to the node array to be able to do this. This will probably necessitate a "Node Settings" side bar--something that was probably going to be needed for later features anyways.
   
  -----
  #### Goal#5: Node Size
