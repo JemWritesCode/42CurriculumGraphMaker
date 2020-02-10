@@ -21,6 +21,11 @@ Click the Run button. If you want to load a new map it will currently load over 
   
   Draw the connections between nodes and get the coordinates. This will correlate to the "By" of Project Data in the 42API.
 
+
+Format:
+The link path, under the 'project_id, x1, y1, x2, y2, ...' format. One child per line
+I think you can have an array of links for nodes with multiple connections.
+
 #### Goal#4: File > Upload to 42Intra
   
   Call the 42API to upload the new graph to the intra.
