@@ -3,8 +3,8 @@ Update the curriculum graph more easily. (AKA Holy Graph / Curriculum Galaxy)
 Currently you can use this to click on the graph and add the text. This will give you a list of coordinates you can enter in 42Intra.
 
 You can use the graph maker here: https://editor.p5js.org/JemCope/sketches/QMqfaOHA
+Click the Run button. 
 
-Click the Run button. If you want to load a new map it will currently load over whatever is on the screen. Hit stop and run again to load on a blank graph.
 ![ExampleImage](https://github.com/Jemmeh/42CurriculumGraphMaker/blob/master/Screen%20Shot%202020-01-30%20at%205.35.39%20PM.png?raw=true)
 
 
