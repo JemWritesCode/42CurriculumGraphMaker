@@ -1,6 +1,6 @@
 # 42CurriculumGraphMaker
 Update the curriculum graph more easily. (AKA Holy Graph / Curriculum Galaxy)
-Currently you can use this to click on the graph and add the text. This will give you a list of coordinates you can enter in Intra.
+Currently you can use this to click on the graph and add the text. This will give you a list of coordinates you can enter in 42Intra.
 
 You can use the graph maker here: https://editor.p5js.org/JemCope/sketches/QMqfaOHA
 
