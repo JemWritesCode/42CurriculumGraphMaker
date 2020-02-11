@@ -28,20 +28,26 @@ function draw() {
   mouseLocation(); 
 }
 
+function clearProjectList(){
+  projectList.length = 0;
+}
+
 function mousePressed() {
-  var selected = false;
-  for (let prj of projectList) {
-    if (!prj.del && collidePointEllipse(mouseX, mouseY, prj.x, prj.y, 30, 30)) {
-      current = prj;
-      selected = true;
-      typing = true;
+  if ($('.dropdown').find('.dropdown-menu').is(":hidden")) { // If we're in a dropdown menu don't make a node.
+    var selected = false;
+    for (let prj of projectList) {
+      if (!prj.del && collidePointEllipse(mouseX, mouseY, prj.x, prj.y, 30, 30)) {
+        current = prj;
+        selected = true;
+        typing = true;
+      }
     }
-  }
-  if (!selected && mouseY < 1000) {
-    newProject = new createProject(mouseX, mouseY);
-    typing = true;
-    current = newProject;
-    projectList.push(newProject);
+    if (!selected && mouseY < 1000) {
+      newProject = new createProject(mouseX, mouseY);
+      typing = true;
+      current = newProject;
+      projectList.push(newProject);
+    }
   }
 }
 
@@ -86,7 +92,7 @@ function createProject(x, y) {
 function uploadJSON(){
    //Section of code used to upload JSON files.
   if (confirm("The current map will be cleared, do you wish to continue?")){
-    projectList.length = 0;
+    clearProjectList();
     $('.dropdown-toggle').dropdown('toggle'); // Put the dropdown menu away
     document.getElementById('contentFile').click()
      document.getElementById('contentFile').onchange = function(evt) {
