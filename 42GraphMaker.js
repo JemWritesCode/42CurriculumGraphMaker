@@ -5,7 +5,6 @@ var myJSON;
 
 function setup() {
   createCanvas(1000, 1000);
-  print("Type '@' (Shift+2) to print coordinates!");
 }
 
 function draw() {
@@ -60,7 +59,9 @@ function keyPressed() {
     current.del = true;
   }
   if (typing) {
-    current.name += key;
+    if (keyCode != 16){ // Don't put record the Shift button for capitals on nodes.
+      current.name += key;
+    }
   }
   if (keyCode === 50){ 
     outputAll();
