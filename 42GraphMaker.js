@@ -69,9 +69,6 @@ function keyPressed() {
       current.name += key;
     }
   }
-  if (keyCode === 50){ 
-    outputAll();
-  }
 }
 
 function createProject(x, y) {
@@ -132,5 +129,5 @@ function outputAll() {
       print(`${prj.name}: (${6 * prj.x}, ${6 * prj.y})`);
     }
   }
-  saveJSON(projectList, 'testSave.txt');
+  saveJSON(projectList, 'HolyGraph.txt');
 }
