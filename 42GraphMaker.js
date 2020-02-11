@@ -1,124 +1,49 @@
-var projectList = [];
-var typing;
-var current;
-var myJSON;
-
-function setup() {
-  createCanvas(1000, 1000);
-}
-
-function draw() {
-  createBackground();
-  writeNumbersOnCanvas();
-  drawLinesOnCanvas();
-  
-  for (let prj of projectList) {
-    if (!prj.del) {
-      prj.display = function() {
-      fill('#474747');
-      stroke('#cccdcf');
-      ellipse(prj.x, prj.y, 30);
-      fill('#cccdcf');
-      textAlign(CENTER, CENTER);
-      text(prj.name, prj.x, prj.y);
-      }
-      prj.display() 
-    }
-  }
-  mouseLocation(); 
-}
-
-function mousePressed() {
-  var selected = false;
-  for (let prj of projectList) {
-    if (!prj.del && collidePointEllipse(mouseX, mouseY, prj.x, prj.y, 30, 30)) {
-      current = prj;
-      selected = true;
-      typing = true;
-    }
-  }
-  if (!selected && mouseY < 1000) {
-    newProject = new createProject(mouseX, mouseY);
-    typing = true;
-    current = newProject;
-    projectList.push(newProject);
-  }
-}
-
-function mouseDragged() {
-  current.x = mouseX;
-  current.y = mouseY;
-  return false;
-}
-
-function keyPressed() {
-  if (keyCode === RETURN || keyCode === ENTER) {
-    typing = false;
-  }
-  if (keyCode === DELETE || keyCode === BACKSPACE) {
-    current.del = true;
-  }
-  if (typing) {
-    if (keyCode != 16){ // Don't put record the Shift button for capitals on nodes.
-      current.name += key;
-    }
-  }
-  if (keyCode === 50){ 
-    outputAll();
-  }
-}
-
-function createProject(x, y) {
-  this.x = x;
-  this.y = y;
-  this.name = '';
-  this.del = false;
-  this.display = function() {
-    fill('#474747');
-    stroke('#cccdcf');
-    ellipse(this.x, this.y, 30);
-    fill('#cccdcf');
-    textAlign(CENTER, CENTER);
-    text(this.name, this.x, this.y);
-  };
-}
-
-function uploadJSON(){
-   //Section of code used to upload JSON files.
-  document.getElementById('contentFile').onchange = function(evt) {
-        try {
-            let files = evt.target.files;
-            if (!files.length) {
-                alert('No file selected!');
-                return;
-            }
-            let file = files[0];
-            let reader = new FileReader();
-            //const self = this;
-            reader.onload = (event) => {
-                //console.log(event.target.result);
-              myJSON = JSON.parse( event.target.result );
-              graphTextFileLoader(myJSON)
-            };
-           reader.readAsText(file);
-        } catch (err) {
-            console.error(err);
-        }
-    } 
-}
-
-function graphTextFileLoader(result) { 
-  print(result)
-  for (let prj of result){
-    projectList.push(prj); 
-  }
-}
-
-function outputAll() {
-  for (let prj of projectList) {
-    if (!prj.del) {
-      print(`${prj.name}: (${6 * prj.x}, ${6 * prj.y})`);
-    }
-  }
-  saveJSON(projectList, 'testSave.txt');
-}
+<!DOCTYPE html>
+<html>
+   <head>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.dom.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.sound.min.js"></script>
+      <script src ="collide2d.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <meta charset="utf-8" />
+      <!--Used to bring in BOOTSTRAP-->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   </head>
+   <body>
+     
+     <div class="sad">
+     <script src="sketch.js"></script>
+      <script src="canvas.js"></script>
+     </div>
+     
+      <!--Used to bring in BOOTSTRAP-->
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+      
+     
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+         <a class="navbar-brand" href="#">HolyGraphMaker</a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+               <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  File
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                     <button class="dropdown-item"  onclick="outputAll()">Save Graph</button>
+                     <input type="file" id="contentFile"/>
+                     <input type="button" onclick="uploadJSON()" value="Load Graph" id="loadGraph"/>
+                  </div>
+            </ul>
+               </li>
+         </div>
+      </nav>
+     
+     
+   </body>
+</html>
