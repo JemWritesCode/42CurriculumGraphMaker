@@ -15,6 +15,7 @@
      <div class="sad">
      <script src="sketch.js"></script>
       <script src="canvas.js"></script>
+     <script src="IntraConnect.js"></script>
      </div>
      
       <!--Used to bring in BOOTSTRAP-->
@@ -41,8 +42,16 @@
                      <div class="dropdown-divider"></div>
                      <button class="dropdown-item"  onclick="if (confirm('Clear the board?')) {clearProjectList()}">Clear Graph</button>
                   </div>
-            </ul>
-               </li>
+                 </li>
+               <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownIntra" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Intra
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                     <button class="dropdown-item"  onclick="uploadIntra()">Upload to Intra</button>
+                  </div>
+                 </li>
+            </ul>               
          </div>
       </nav>
      

@@ -1,3 +1,7 @@
+function uploadIntra(){
+ alert("This feature is not working yet."); 
+}
+
 //trying a few methods to connect to the Intra.
 var UID = "SetYoursHere"
 var SECRET = "SetYoursHere"
