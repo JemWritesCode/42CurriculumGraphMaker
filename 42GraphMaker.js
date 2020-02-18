@@ -4,7 +4,8 @@ var current;
 var myJSON;
 
 function setup() {
-  createCanvas(1000, 1000);
+  var myCanvas = createCanvas(1000, 1000);
+  myCanvas.parent("graphBoardDiv");
 }
 
 function draw() {
@@ -37,25 +38,28 @@ function updateProjectID(){
   // TODO: It's not updating the projectID of the current project because clicking on the projectID textbox is actually clicking a node behind that menu.
 }
 
-function mousePressed() {
-  if ($('.dropdown').find('.dropdown-menu').is(":hidden")) { // If we're in a dropdown menu don't make a node.
-    var selected = false;
-    for (let prj of projectList) {
-      if (!prj.del && collidePointEllipse(mouseX, mouseY, prj.x, prj.y, 30, 30)) {
-        current = prj;
-        selected = true;
-        typing = true;
+function mousePressed(e) {
+  var clickDiv = document.querySelector('#graphBoardDiv');
+   if (clickDiv.contains(event.target)){
+    if ($('.dropdown').find('.dropdown-menu').is(":hidden")) { // If we're in a dropdown menu don't make a node.
+      var selected = false;
+      for (let prj of projectList) {
+        if (!prj.del && collidePointEllipse(mouseX, mouseY, prj.x, prj.y, 30, 30)) {
+          current = prj;
+          selected = true;
+          typing = true;
+        }
       }
+      if (!selected && mouseY < 1000) {
+        newProject = new createProject(mouseX, mouseY);
+        typing = true;
+        current = newProject;
+        projectList.push(newProject);
+      }
+      document.getElementById("projectNametextBox").value = current.name;
+      document.getElementById("projectIDtextBox").value = current.projectID;
     }
-    if (!selected && mouseY < 1000) {
-      newProject = new createProject(mouseX, mouseY);
-      typing = true;
-      current = newProject;
-      projectList.push(newProject);
-    }
-    document.getElementById("projectNametextBox").value = current.name;
-    document.getElementById("projectIDtextBox").value = current.projectID;
-  }
+   }
 }
 
 function mouseDragged() {
