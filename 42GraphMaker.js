@@ -38,6 +38,11 @@ function updateProjectID(){
   // TODO: It's not updating the projectID of the current project because clicking on the projectID textbox is actually clicking a node behind that menu.
 }
 
+function updateProjectName(){
+  current.name = document.getElementById("projectNametextBox").value;
+  // TODO: It's not updating the projectID of the current project because clicking on the projectID textbox is actually clicking a node behind that menu.
+}
+
 function mousePressed(e) {
   var clickDiv = document.querySelector('#graphBoardDiv');
    if (clickDiv.contains(event.target)){
@@ -74,11 +79,6 @@ function keyPressed() {
   }
   if (keyCode === DELETE || keyCode === BACKSPACE) {
     current.del = true;
-  }
-  if (typing) {
-    if (keyCode != 16){ // Don't put record the Shift button for capitals on nodes.
-      current.name += key;
-    }
   }
 }
 
