@@ -32,6 +32,11 @@ function clearProjectList(){
   projectList.length = 0;
 }
 
+function updateProjectID(){
+  current.projectID = document.getElementById("projectIDtextBox").value;
+  // TODO: It's not updating the projectID of the current project because clicking on the projectID textbox is actually clicking a node behind that menu.
+}
+
 function mousePressed() {
   if ($('.dropdown').find('.dropdown-menu').is(":hidden")) { // If we're in a dropdown menu don't make a node.
     var selected = false;
@@ -48,6 +53,8 @@ function mousePressed() {
       current = newProject;
       projectList.push(newProject);
     }
+    document.getElementById("projectNametextBox").value = current.name;
+    document.getElementById("projectIDtextBox").value = current.projectID;
   }
 }
 
@@ -75,6 +82,7 @@ function createProject(x, y) {
   this.x = x;
   this.y = y;
   this.name = '';
+  this.projectID = '';
   this.del = false;
   this.display = function() {
     fill('#474747');
