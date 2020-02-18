@@ -1,12 +1,13 @@
 # 42CurriculumGraphMaker
-Update the curriculum graph more easily. (AKA Holy Graph / Curriculum Galaxy)
-Currently you can use this to click on the graph and add the text. This will give you a list of coordinates you can enter in 42Intra.
+Update the 42Intra curriculum graph more easily. (AKA Holy Graph / Curriculum Galaxy)
 
 You can use the graph maker here: https://editor.p5js.org/JemCope/present/QMqfaOHA
 
 ![ExampleImage](https://github.com/Jemmeh/42CurriculumGraphMaker/blob/master/Screen%20Shot%202020-01-30%20at%205.35.39%20PM.png?raw=true)
 
 ## Usage Tips:
+Currently you can use this to click on the graph and add the text. This will give you a list of coordinates you can enter in 42Intra.
+
 DELETE: To delete a project node, click it and press `delete` on the keyboard.
 
 
@@ -27,7 +28,7 @@ DELETE: To delete a project node, click it and press `delete` on the keyboard.
 #### Goal#3: File > Upload to 42Intra
 Call the 42API to upload the new graph to the intra.
 
-  Goal 3.1
+DONE Goal 3.1
     Will need to add the projectID to the node array to be able to do this. This will probably necessitate a "Node Settings" side bar--something that was probably going to be needed for later features anyways.
   
   
