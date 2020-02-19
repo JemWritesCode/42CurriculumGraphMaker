@@ -68,9 +68,12 @@ function mousePressed(e) {
 }
 
 function mouseDragged() {
-  current.x = mouseX;
-  current.y = mouseY;
-  return false;
+  var clickDiv = document.querySelector('#graphBoardDiv');
+  if (clickDiv.contains(event.target)){
+    current.x = mouseX;
+    current.y = mouseY;
+    return false;
+  }
 }
 
 function keyPressed() {
