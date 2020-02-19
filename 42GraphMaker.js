@@ -18,10 +18,10 @@ function draw() {
       prj.display = function() {
       fill('#474747');
       stroke('#cccdcf');
-      ellipse(prj.x, prj.y, 30);
+      ellipse(prj.x / 6, prj.y / 6, 30);
       fill('#cccdcf');
       textAlign(CENTER, CENTER);
-      text(prj.name, prj.x, prj.y);
+      text(prj.name, prj.x / 6, prj.y / 6);
       }
       prj.display() 
   }
@@ -47,7 +47,7 @@ function mousePressed(e) {
     if ($('.dropdown').find('.dropdown-menu').is(":hidden")) { // If we're in a dropdown menu don't make a node.
       var selected = false;
       for (let prj of projectList) {
-        if (collidePointEllipse(mouseX, mouseY, prj.x, prj.y, 30, 30)) {
+        if (collidePointEllipse(mouseX, mouseY, prj.x / 6, prj.y / 6, 30, 30)) {
           current = prj;
           selected = true;
         }
@@ -67,8 +67,8 @@ function mousePressed(e) {
 function mouseDragged() {
   var clickDiv = document.querySelector('#graphBoardDiv');
   if (clickDiv.contains(event.target)){
-    current.x = mouseX;
-    current.y = mouseY;
+    current.x = mouseX * 6;
+    current.y = mouseY * 6;
     return false;
   }
 }
@@ -82,17 +82,17 @@ function keyPressed() {
 }
 
 function createProject(x, y) {
-  this.x = x;
-  this.y = y;
+  this.x = x * 6;
+  this.y = y* 6;
   this.name = '';
   this.projectID = '';
   this.display = function() {
     fill('#474747');
     stroke('#cccdcf');
-    ellipse(this.x, this.y, 30);
+    ellipse(this.x / 6, this.y / 6, 30);
     fill('#cccdcf');
     textAlign(CENTER, CENTER);
-    text(this.name, this.x, this.y);
+    text(this.name, this.x / 6, this.y / 6);
   };
 }
 
@@ -133,9 +133,6 @@ function graphTextFileLoader(result) {
   }
 }
 
-function outputAll() {
-  for (let prj of projectList) {
-      print(`${prj.name}: (${6 * prj.x}, ${6 * prj.y})`);    
-  }
+function saveGraphFile() {
   saveJSON(projectList, 'HolyGraph.txt');
 }
