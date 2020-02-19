@@ -1,7 +1,6 @@
 // need to fix the div size because I can make nodes to the right in the white area because that div is not limited there.
 
 var projectList = [];
-var typing;
 var current;
 var myJSON;
 
@@ -51,12 +50,10 @@ function mousePressed(e) {
         if (collidePointEllipse(mouseX, mouseY, prj.x, prj.y, 30, 30)) {
           current = prj;
           selected = true;
-          typing = true;
         }
       }
       if (!selected && mouseY < 1000) {
         newProject = new createProject(mouseX, mouseY);
-        typing = true;
         current = newProject;
         projectList.push(newProject);
         
@@ -78,7 +75,6 @@ function mouseDragged() {
 
 function keyPressed() {
   if (keyCode === RETURN || keyCode === ENTER) {
-    typing = false;
   }
   if (keyCode === DELETE) {
     projectList.splice(projectList.indexOf(current), 1);
