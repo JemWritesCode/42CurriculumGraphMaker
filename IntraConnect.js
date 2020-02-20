@@ -5,8 +5,10 @@ function uploadIntra(){
 // Set your information. Should probably have this popup to ask each time it's running.
 var UID = "SetYoursHere"
 var SECRET = "SetYoursHere"
+var projectSessionID = "4299"; //4299 is the TestNode on H2STestCursus
 
-// This works to get a token in RunKit node environment:
+//currently returning Object {detail: "Access token invalid or expired", status: 401, title: "Unauthorized", …}
+
 function run() {
   const credentials = {
   client: {
@@ -24,13 +26,25 @@ function run() {
     scope: 'projects',
   };
 
-  try {
+
     const result =  oauth2.clientCredentials.getToken(tokenConfig);
     const accessToken = oauth2.accessToken.create(result);
+    console.log("Got the token!");
     console.log(accessToken);
-  } catch (error) {
-    console.log('Access Token error', error.message);
+    fetch('https://api.petfinder.com/v2/project_data/project_session_id=' + projectSessionID, 
+    {
+		headers: {
+			'Authorization': "Bearer" + accessToken,
+			'Content-Type': 'application/json'
+		}
+	}).then(function (resp) {
+
+	// Return the API response as JSON
+	return resp.json();
+
+}).then(function (data) {
+    console.log("Here's the data!", data);
+    })
   }
-}
 
 run();
