@@ -6,16 +6,15 @@ You can use the graph maker here: https://editor.p5js.org/JemCope/present/QMqfaO
 ![ExampleImage](https://github.com/Jemmeh/42CurriculumGraphMaker/blob/master/Screen%20Shot%202020-01-30%20at%205.35.39%20PM.png?raw=true)
 
 ## Usage Tips:
-Currently you can use this to click on the graph and add the text. This will give you a list of coordinates you can enter in 42Intra.
+This program allows you to draw out the graph and will give you a JSON file of project coordinates and project IDs. 
+Click on the map to create project nodes.
 
 DELETE: To delete a project node, click it and press `delete` on the keyboard.
 
 
-
-
-
-
 ## Currently in Development:
+
+
 #### DONE Goal#1: File > Save Graph
   
   Will save into a .txt file
