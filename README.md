@@ -7,8 +7,9 @@ You can use the graph maker here: https://editor.p5js.org/JemCope/present/QMqfaO
 
 ## Usage Tips:
 This program allows you to draw out the graph and will give you a JSON file of project coordinates and project IDs. 
-Click on the map to create project nodes.
 
+Click on the map to create project nodes. 
+Click and drag to move project nodes around.
 DELETE: To delete a project node, click it and press `delete` on the keyboard.
 
 
