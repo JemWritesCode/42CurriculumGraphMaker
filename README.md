@@ -16,6 +16,7 @@ This program allows you to draw out the graph and will give you a JSON file of p
 
 
 ## Currently in Development:
+Jem: I am no longer working on developing this. It'd be a great project for someone to write a script to upload the JSON to Intra--the API has the correct functionality to do this, I just didn't have time to work on it further.
 
 
 #### DONE Goal#1: File > Save Graph
